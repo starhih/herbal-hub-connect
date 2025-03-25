@@ -4,31 +4,22 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.7;
-    }
-  }, []);
+  const videoRef = useRef<HTMLIFrameElement>(null);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-herb-800/70 via-herb-700/50 to-herb-900/50 z-10"></div>
-        <video
+        <iframe
           ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
           className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        >
-          <source src="https://youtu.be/vVd06RE0a3o" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          src="https://www.youtube.com/embed/vVd06RE0a3o?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=vVd06RE0a3o"
+          title="Star Hi Herbs Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
       </div>
 
       {/* Content */}
