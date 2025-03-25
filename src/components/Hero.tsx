@@ -19,6 +19,17 @@ const Hero = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           frameBorder="0"
           allowFullScreen
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100%',
+            height: '100%',
+            transform: 'translate(-50%, -50%)',
+            objectFit: 'cover',
+            minWidth: '100%',
+            minHeight: '100%'
+          }}
         ></iframe>
       </div>
 
