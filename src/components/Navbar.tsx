@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, User } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +65,7 @@ const Navbar = () => {
     <header className={navbarClasses}>
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-herb-700 font-serif text-2xl font-bold">Star Hi Herbs</span>
+          <img src="/lovable-uploads/a9878155-60a6-41f2-b34d-e2b785cbcc18.png" alt="Star Hi Herbs Logo" className="h-12" />
         </Link>
 
         {/* Desktop Menu */}
@@ -73,12 +73,12 @@ const Navbar = () => {
           {menuItems.map((item, index) => (
             <div key={index} className="relative group">
               {item.dropdown ? (
-                <div className="flex items-center cursor-pointer text-charcoal-900 hover:text-herb-600 transition-colors">
+                <div className={`flex items-center cursor-pointer transition-colors ${scrolled ? 'text-charcoal-900 hover:text-herb-600' : 'text-white hover:text-cream-100'}`}>
                   <span>{item.name}</span>
                   <ChevronDown className="ml-1 w-4 h-4" />
                 </div>
               ) : (
-                <Link to={item.path} className="text-charcoal-900 hover:text-herb-600 transition-colors">
+                <Link to={item.path} className={`transition-colors ${scrolled ? 'text-charcoal-900 hover:text-herb-600' : 'text-white hover:text-cream-100'}`}>
                   {item.name}
                 </Link>
               )}
@@ -106,17 +106,16 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center">
           <Link 
-            to="/client-login" 
-            className="flex items-center px-4 py-2 rounded-full border border-herb-500 text-herb-500 hover:bg-herb-50 transition-colors"
+            to="/quote" 
+            className="flex items-center px-4 py-2 rounded-full bg-herb-500 text-white hover:bg-herb-600 transition-colors"
           >
-            <User className="w-4 h-4 mr-2" />
-            <span>Client Login</span>
+            <span>Request a Quote</span>
           </Link>
         </div>
 
         {/* Mobile menu button */}
         <button
-          className="lg:hidden text-charcoal-900 hover:text-herb-600 focus:outline-none"
+          className={`lg:hidden focus:outline-none ${scrolled ? 'text-charcoal-900' : 'text-white'}`}
           onClick={toggleMenu}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -172,11 +171,11 @@ const Navbar = () => {
           ))}
           <div className="pt-6">
             <Link
-              to="/client-login"
+              to="/quote"
               className="block w-full px-4 py-2 text-center rounded-full bg-herb-500 text-white hover:bg-herb-600 transition-colors"
               onClick={toggleMenu}
             >
-              Client Login
+              Request a Quote
             </Link>
           </div>
         </nav>
