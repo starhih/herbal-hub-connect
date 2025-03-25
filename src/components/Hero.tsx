@@ -13,22 +13,20 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-herb-800/70 via-herb-700/50 to-herb-900/50 z-10"></div>
         <iframe
           ref={videoRef}
-          className="w-full h-full object-cover"
-          src="https://www.youtube.com/embed/vVd06RE0a3o?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=vVd06RE0a3o"
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/vVd06RE0a3o?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=vVd06RE0a3o&enablejsapi=1"
           title="Star Hi Herbs Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           frameBorder="0"
           allowFullScreen
           style={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
+            top: '0',
+            left: '0',
             width: '100%',
             height: '100%',
-            transform: 'translate(-50%, -50%)',
             objectFit: 'cover',
-            minWidth: '100%',
-            minHeight: '100%'
+            pointerEvents: 'none'
           }}
         ></iframe>
       </div>
