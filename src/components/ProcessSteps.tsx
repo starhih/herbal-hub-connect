@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { SeedlingIcon, Factory, Flask, TruckIcon } from 'lucide-react';
+import { Sprout, Factory, TestTube, Truck } from 'lucide-react';
 
 const steps = [
   {
     id: 1,
     title: "Ethical Sourcing",
     description: "We carefully select the highest quality raw materials from sustainable sources around the world.",
-    icon: SeedlingIcon,
+    icon: Sprout,
     color: "bg-herb-50",
     iconColor: "text-herb-600"
   },
@@ -23,7 +23,7 @@ const steps = [
     id: 3,
     title: "Rigorous Testing",
     description: "Every batch undergoes comprehensive testing to ensure potency, purity, and compliance with global standards.",
-    icon: Flask,
+    icon: TestTube,
     color: "bg-herb-50",
     iconColor: "text-herb-600"
   },
@@ -31,7 +31,7 @@ const steps = [
     id: 4,
     title: "Secure Delivery",
     description: "We ensure proper handling and temperature-controlled shipping to maintain product integrity.",
-    icon: TruckIcon,
+    icon: Truck,
     color: "bg-cream-100",
     iconColor: "text-terracotta-400"
   }
