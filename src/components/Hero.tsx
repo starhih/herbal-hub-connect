@@ -1,38 +1,26 @@
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
-  const videoRef = useRef<HTMLIFrameElement>(null);
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-herb-800/70 via-herb-700/50 to-herb-900/50 z-10"></div>
-        <iframe
-          ref={videoRef}
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/vVd06RE0a3o?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=vVd06RE0a3o&enablejsapi=1"
-          title="Star Hi Herbs Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          frameBorder="0"
-          allowFullScreen
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            pointerEvents: 'none'
-          }}
-        ></iframe>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Content */}
-      <div className="container relative z-20 pt-20 pb-10">
+      <div className="container relative z-20">
         <div className="max-w-3xl animate-fade-in">
           <span className="inline-block bg-terracotta-400/90 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm mb-6">
             Premium Botanical Products Since 1997

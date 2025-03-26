@@ -1,11 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +27,13 @@ const Navbar = () => {
   };
 
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-                        ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`;
+                        ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : isHomePage ? 'bg-transparent py-5' : 'bg-white py-5 shadow-md'}`;
+
+  const getTextColor = () => {
+    if (scrolled) return 'text-charcoal-900 hover:text-herb-600';
+    if (isHomePage) return 'text-white hover:text-cream-100';
+    return 'text-charcoal-900 hover:text-herb-600';
+  };
 
   const menuItems = [
     { 
@@ -73,12 +80,12 @@ const Navbar = () => {
           {menuItems.map((item, index) => (
             <div key={index} className="relative group">
               {item.dropdown ? (
-                <div className={`flex items-center cursor-pointer transition-colors ${scrolled ? 'text-charcoal-900 hover:text-herb-600' : 'text-white hover:text-cream-100'}`}>
+                <div className={`flex items-center cursor-pointer transition-colors ${getTextColor()}`}>
                   <span>{item.name}</span>
                   <ChevronDown className="ml-1 w-4 h-4" />
                 </div>
               ) : (
-                <Link to={item.path} className={`transition-colors ${scrolled ? 'text-charcoal-900 hover:text-herb-600' : 'text-white hover:text-cream-100'}`}>
+                <Link to={item.path} className={`transition-colors ${getTextColor()}`}>
                   {item.name}
                 </Link>
               )}
@@ -115,7 +122,7 @@ const Navbar = () => {
 
         {/* Mobile menu button */}
         <button
-          className={`lg:hidden focus:outline-none ${scrolled ? 'text-charcoal-900' : 'text-white'}`}
+          className={`lg:hidden focus:outline-none ${getTextColor()}`}
           onClick={toggleMenu}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
